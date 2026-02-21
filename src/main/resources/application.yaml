@@ -6,3 +6,13 @@ spring:
       base-url: http://localhost:11434
       chat:
         model: minimax-m2.5:cloud
+    mcp:
+      client:
+        stdio:
+          connections:
+            filesystem:
+              command: npx
+              args:
+                - "-y"
+                - "@modelcontextprotocol/server-filesystem"
+                - "./"

@@ -1,6 +1,7 @@
 package com.feurle.ai.chat.controller;
 
 import com.feurle.ai.chat.dto.ChatRequest;
+import com.feurle.ai.chat.dto.ChatResponse;
 import com.feurle.ai.chat.service.OllamaService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -22,8 +23,9 @@ public class ChatController {
 
     // Normaler Request
     @PostMapping
-    public ResponseEntity<String> chat(@RequestBody ChatRequest request) {
-        return ResponseEntity.ok(ollamaService.chat(request.message()));
+    public ResponseEntity<ChatResponse> chat(@RequestBody ChatRequest request) {
+        var answer = ollamaService.chat(request.message());
+        return ResponseEntity.ok(new ChatResponse(answer));
     }
 
     // Streaming Request

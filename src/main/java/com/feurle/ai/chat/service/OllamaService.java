@@ -17,6 +17,7 @@ public class OllamaService {
         return chatClient
                 .prompt()
                 .user(userMessage)
+                .tools()
                 .call()
                 .content();
     }
