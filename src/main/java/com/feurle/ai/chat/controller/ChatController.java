@@ -28,6 +28,12 @@ public class ChatController {
         return ResponseEntity.ok(new ChatResponse(answer));
     }
 
+    // Normaler Request
+    @PostMapping(value = "/plain")
+    public ResponseEntity<String> plain(@RequestBody ChatRequest request) {
+        return ResponseEntity.ok(ollamaService.chat(request.message()));
+    }
+
     // Streaming Request
     @PostMapping(value = "/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<String> chatStream(@RequestBody ChatRequest request) {
