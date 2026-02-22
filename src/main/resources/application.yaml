@@ -16,3 +16,7 @@ spring:
                 - "-y"
                 - "@modelcontextprotocol/server-filesystem"
                 - "./"
+        sse:
+          connections:
+            openhab:
+              url: http://localhost:8081
