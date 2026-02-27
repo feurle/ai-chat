@@ -6,6 +6,11 @@ spring:
       base-url: http://localhost:11434
       chat:
         model: minimax-m2.5:cloud
+
+---
+
+spring:
+  ai:
     mcp:
       client:
         stdio:
@@ -16,7 +21,16 @@ spring:
                 - "-y"
                 - "@modelcontextprotocol/server-filesystem"
                 - "./"
+            brightdata:
+              command: npx
+              args:
+                - "@brightdata/mcp"
+              env:
+                API_TOKEN: "294a35c7-57ea-4d5b-b2dc-4e98a4c6cae8"
         sse:
           connections:
             openhab:
               url: http://localhost:8081
+  config:
+    activate:
+      on-profile: mcp
